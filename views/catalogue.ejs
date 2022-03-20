@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+    <% for(let item of ramen) {%>
+        <div class="card my-3">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <%= item.variety %>
+                </h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <%=item.brand %>
+                    </li>
+                    <li class="list-group-item">
+                        <%=item.country %>
+                    </li>
+                    <li class="list-group-item">
+                        <%=item.style %>
+                    </li>
+                    <li class="list-group-item">
+                        <%=item.stars %>/5
+                    </li>
+                </ul>
+                <a href="/catalogue/<%= item._id %>" class="btn btn-primary mt-3">Show</a>
+            </div>
+        </div>
+        <% } %>

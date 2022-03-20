@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+<form action="/catalogue/<%= ramen._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="form-row mx-5 text-light">
+        <div class="form-group col-md-12">
+            <label for="variety">Variety</label>
+            <input type="text" class="form-control" id="variety"name="variety" value="<%= ramen.variety %>" required>
+        </div>
+      <div class="form-group col-md-6">
+        <label for="brand">Brand</label>
+        <input type="text" class="form-control" id="brand" name="brand" value="<%= ramen.brand %>" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="style">Style</label>
+        <input type="text" class="form-control" id="style" name="style" value="<%= ramen.style %>" required>
+    </div>
+      <div class="form-group col-md-6">
+        <label for="stars">Stars</label>
+        <input type="number" class="form-control" id="stars"  name="stars" value="<%= ramen.stars %>" required>
+    </div>
+      <div class="form-group col-md-6">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country"  name="country" value="<%= ramen.country %>" required>
+      </div>
+      <div class="form-file col-md-12">
+        <label class="form-file-label" for="image">Add Image(s)</label>
+        <input type="file" class="form-file-input" id="image"  name="image" multiple>
+      </div>
+      <div class="col-md-12">
+        <% ramen.image.forEach(function(img,i){%>
+          <img src="<%= img.url%>"  class="img-thumbnail" alt="">
+          <div class="form-check">
+            <input type="checkbox" id="img-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+          </div>
+            <label for="img-<%=i%>">Delete</label>
+        <%} )%> 
+      </div>
+      <div class="col-12 my-3">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
